@@ -1,4 +1,4 @@
-// 1) Genera un array de números aleatorios, ordenarlos y mostrarlo en una lista desordenada. 
+// Ejercicio 1) Genera un array de números aleatorios, ordenarlos y mostrarlo en una lista desordenada. 
 
 const punto1 = Array(6)
     .fill()
