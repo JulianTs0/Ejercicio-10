@@ -1,68 +1,3 @@
-// Ejercicio 1) Genera un array de números aleatorios, ordenarlos y mostrarlo en una lista desordenada. 
-
-const punto1 = Array(6)
-    .fill()
-    .map(() => Math.floor(100 * Math.random()));
-console.log(punto1.sort());
-
-const lista = document.getElementById("punto1");
-punto1.forEach((item)=>{
-const li = document.createElement("li");
-li.innerText = item;
-lista.appendChild(li);
-})
-
-// 2)
-// a) Iterar por todos los elementos dentro de un array utilizando while y mostrarlos en
-// pantalla.
-
-const punto2a = [1,2,3,4,5,6]
-let i = 0
-while(i<=punto2a.length-1) {
-console.log(punto2a[i]); i++}
-
-
-//b) Iterar por todos los elementos dentro de un array utilizando for y mostrarlos en
-// pantalla.
-
-const punto2b = [1,2,3,4,5,6];
-for (i = 0; i < punto2b.length; i++) {
-console.log(punto2b[i]); }
-    
-
-// c) Iterar por todos los elementos dentro de un array utilizando .forEach y mostrarlos
-// en pantalla.
-
-const punto2c = [1,2,3,4,5,6];
-punto2c.forEach(function(value, index){
-console.log(value);
-console.log(index);})
-
-
-// d) Mostrar todos los elementos dentro de un array sumándole uno a cada uno
-
-const punto2d = [1,2,3,4,5,6]
-const mas1 = punto2d.map(function(x) {
-return x + 1; });
-console.log(mas1)
-
-
-// e) Generar una copia de un array pero con todos los elementos incrementados en 1.
-
-const copiadepunto2d = mas1
-const incremento1 = copiadepunto2d.map(function(x) {
-return x + 1; });
-console.log(incremento1)
-
-
-// f) Calcular el promedio
-
-const punto2f = [1,2,3,4,5,6]
-const average = punto2f.reduce((a, b) => a + b) / punto2f.length;
-console.log(average);
-
-
-
 // Ejercicio 3
 
 let respuesta3 = document.getElementById("res3");
@@ -85,28 +20,81 @@ const arr2_reducido = arr2_plus.reduce(reducer);
 
 respuesta4.innerText = arr2_reducido;
 
-// 7) Crear una función que reciba un arreglo con números y devuelva un nuevo arreglo con
-// solo los números pares (Recuerda que ((numero % 2) == 0) determina si un numero es
-// par o no, si tiene el resultado ==0 es par, sino es impar)
+// Ejercicio 5 Arcangel
 
-function funcion (puntos) {
-console.log(puntos) }
-const punto7 = [1,2,3,4,5,6,7,8,9,10]
-const punto7a = punto7.filter(n => n %2 ==0 )
-funcion(punto7a);
+// Dado el array ["Florencia", "Lucas", "Ezequiel", "Matias", "Bruno", "Gustavo", "Martin"].
+// a. Obtener aquellos nombres con al menos 6 letras.
+let Actividad5A = document.getElementById("Ejerc5a");
+// b. Obtener los nombres que comienzan con "M".
+let Actividad5B = document.getElementById("Ejerc5b");
+// c. Ordenar alfabéticamente y mostrar por consola.
+// d. Generar un array que contenga solo las iniciales
+let Actividad5D = document.getElementById("Ejerc5d");
+// e. Generar un array que contenga todos los nombres en mayúscula.
+let Actividad5E = document.getElementById("Ejerc5e");
+// f. Queremos saber si alguno de estos nombres comienza con "J”
+let Actividad5F = document.getElementById("Ejerc5f");
 
-// 8) Crear una función que reciba un arreglo con palabras, crear un nuevo arreglo que
-// contenga sólo las palabras que empiezan con una vocal.
+const nombres = ["Florencia", "Lucas", "Ezequiel", "Matias", "Bruno", "Gustavo", "Martin"];
+let nombres6Letras = "";
+nombres.forEach(nombre => { if(nombre.length >= 6) {
+    nombres6Letras += nombre + ", ";
+}});
+Actividad5A.innerText = "Rta: " + nombres6Letras;
 
-function funcionn (puntoss) {
-console.log(puntoss) }
-const punto8 = ["Tarea", "Yosha", "Alto", "Fire Emblem", "Asael", "NieR", "Yolo", "Voy", "Esoooo", "Automata"];
-const punto8A = punto8.filter((vocal) => vocal.startsWith("A"));
-funcionn(punto8A);
+let nombresMInicial = "";
+nombres.forEach(function(nombre){
+    if (nombre[0] == "M") {
+        nombresMInicial += nombre + ", ";
+    }
+});
+Actividad5B.innerText = "Rta: " + nombresMInicial;
+
+let nombresInicial = "";
+nombres.forEach(function(nombre){
+        nombresInicial += nombre[0] + ", ";
+});
+Actividad5D.innerText = "Rta: " + nombresInicial;
+
+const MayusNombres = [];
+nombres.forEach(function(nombre){
+    MayusNombres.push(nombre.toUpperCase());
+});
+Actividad5E.innerText = "Rta: " + MayusNombres;
+
+const resultadoActividad5F = nombres.filter(nombre => nombre[0] == "J");
+if(resultadoActividad5F.length != 0 )
+{
+    Actividad5F.innerText = "Rta: Si hay un nombre que comienza con J"
+}else{
+    Actividad5F.innerText = "Rta: No hay un nombre que comienza con J"
+}
+
+console.log("-----Actividad 5 c-----");
+console.log(nombres.sort());
+
+// Ejercicio 6 Arcangel
+// Dado un array que contiene ["azul", "amarillo", "rojo", "verde", "café", "rosa"] determinar si un
+// color introducido por el usuario a través de un prompt se encuentra dentro del array o no.
+
+let pAct6 = document.getElementById("ResultAct6");
+const ColorsAct6 = ["azul", "amarillo", "rojo", "verde", "café", "rosa"]
+document.getElementById("btnAct6").addEventListener("click", (e) =>{
+    e.preventDefault();
+    pAct6.innerText = "";
+    let colorUsr = prompt("Escribir un color").toLowerCase();
+    ColorsAct6.forEach(color => { if(color == colorUsr){
+            pAct6.innerText = `Rta: El color ${colorUsr} existe en el array`
+        }
+    });
+    if(pAct6.outerText == ""){
+        pAct6.innerText = `Rta: El color ${colorUsr} no existe en el array`
+    }
+})
 
 // Ejercicio 9
 
-let array = document.getElementById("arr")
+let array = document.getElementById("arr");
 let p1 = document.getElementById("pos1");
 let p2 = document.getElementById("pos2");
 let res9 = document.getElementById("res9");
@@ -160,6 +148,60 @@ gr.addEventListener("click",()=>{
     
 })
 
+// Ejercicio 11 Arcangel
+
+//Mostrar una lista no ordenada con 4 elementos 'li'. Ocultar el que se presiona.
+let erElement = document.getElementById("agua");
+let doElement = document.getElementById("fuego");
+let eroElement = document.getElementById("tierra");
+let toElement = document.getElementById("viento");
+erElement.addEventListener("mousedown", () =>{
+    erElement.style = "color: white";
+});
+erElement.addEventListener("mouseup", () =>{
+    erElement.style= "color: black";
+});
+doElement.addEventListener("mousedown", () =>{
+    doElement.style = "color: white";
+});
+doElement.addEventListener("mouseup", () =>{
+    doElement.style= "color: black";
+});
+eroElement.addEventListener("mousedown", () =>{
+    eroElement.style = "color: white";
+});
+eroElement.addEventListener("mouseup", () =>{
+    eroElement.style= "color: black";
+});
+toElement.addEventListener("mousedown", () =>{
+    toElement.style = "color: white";
+});
+toElement.addEventListener("mouseup", () =>{
+    toElement.style= "color: black";
+});
+
+// Ejercicio 12 Arcangel
+
+// Confeccionar una página que muestre dos tablas con tres filas cada una. Cambiar el color de
+// fondo de cada fila de la primera tabla cuando sea presionada con el mouse (en lugar de tabla
+// pueden usar otra estructura que les parezca mientras siga el ejemplo)
+let TablaErFila = document.getElementById("erFila");
+let TablaDaFila = document.getElementById("daFila");
+let TablaEraFila = document.getElementById("eraFila");
+TablaErFila.addEventListener("click", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    TablaErFila.style = `background-color: #${randomColor};`
+})
+TablaDaFila.addEventListener("click", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    TablaDaFila.style = `background-color: #${randomColor};`
+})
+TablaEraFila.addEventListener("click", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    TablaEraFila.style = `background-color: #${randomColor};`
+})
+
+
 //Ejercicio 15
 
 let aref = document.getElementById("ref");
@@ -207,6 +249,70 @@ restaurar.addEventListener("click",()=>{
     strong3.style.display = "block";
 })
 
+// Ejercicio 17 Arcangel
+// Crear una tabla con dos filas y dos columnas, cambiar el color del interior de la casilla cuando
+// ingresamos con el mouse y dejarla con dicho color cuando retiramos la flecha
+let PrimeraCasilla = document.getElementById("FCsllCF");
+let SegundaCasilla  = document.getElementById("SCsllCF");
+let TerceraCasilla  = document.getElementById("FCsllCS");
+let CuartaCasilla  = document.getElementById("SCsllCS");
+PrimeraCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    PrimeraCasilla.style = `background-color: #${randomColor};`
+})
+SegundaCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    SegundaCasilla.style = `background-color: #${randomColor};`
+})
+TerceraCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    TerceraCasilla.style = `background-color: #${randomColor};`
+})
+CuartaCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    CuartaCasilla.style = `background-color: #${randomColor};`
+})
+
+// Ejercicio 18 Arcangel
+// Crear una tabla con dos filas y dos columnas, cambiar el color del interior de la casilla cuando
+// ingresamos con el mouse y regresar al original cuando salimos.
+let STPrimeraCasilla = document.getElementById("STFCsllCF");
+let STSegundaCasilla  = document.getElementById("STSCsllCF");
+let STTerceraCasilla  = document.getElementById("STFCsllCS");
+let STCuartaCasilla  = document.getElementById("STSCsllCS");
+STPrimeraCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STPrimeraCasilla.style = `background-color: #${randomColor};`
+})
+STSegundaCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STSegundaCasilla.style = `background-color: #${randomColor};`
+})
+STTerceraCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STTerceraCasilla.style = `background-color: #${randomColor};`
+})
+STCuartaCasilla.addEventListener("mouseover", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STCuartaCasilla.style = `background-color: #${randomColor};`
+})
+STPrimeraCasilla.addEventListener("mouseout", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STPrimeraCasilla.style = `background-color: white`
+})
+STSegundaCasilla.addEventListener("mouseout", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STSegundaCasilla.style = `background-color: white`
+})
+STTerceraCasilla.addEventListener("mouseout", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STTerceraCasilla.style = `background-color: white`
+})
+STCuartaCasilla.addEventListener("mouseout", () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    STCuartaCasilla.style = `background-color: white;`
+})
+
 //Ejercicio 20
 
 let link = document.getElementById("Link");
@@ -216,3 +322,15 @@ link.addEventListener("click",(e)=>{
     console.log("-----Ejercicio 20-----");
     console.log(link.href);
 })
+// Ejercicio 21 Arcangel
+// Hacer que un formulario no se envíe al hacer click en "enviar", en lugar de eso mostrar un texto
+// en la página que el formulario fue enviado. (Misma función que el anterior, solo que muestren
+// lo que mostraron por consola en una etiqueta HTML)
+document.getElementById("btnFormAct21").addEventListener("click", (e) =>{
+    e.preventDefault();
+    let formAct21 = document.getElementById("FormAct21");
+    let MsjFormAct21 = document.getElementById("MsjFormAct21")
+    formAct21.hidden = true;
+    MsjFormAct21.innerText = "mensaje enviado";
+})
+
